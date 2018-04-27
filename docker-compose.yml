@@ -1,11 +1,13 @@
 version: '3.3'
 services:
   landing:
-    image: nginx:latest
+    image: webtree/landing
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
       - ./www:/var/www/html
+      - ./letsencrypt:/etc/letsencrypt
     restart: always
     ports:
       - 80:80
+      - 443:443
     command: /bin/bash -c "nginx -g 'daemon off;'"
