@@ -3,6 +3,13 @@ FROM nginx
 EXPOSE 80
 EXPOSE 443
 
+
+RUN rm /usr/share/nginx/html/*
+COPY www/* /usr/share/nginx/html
+COPY config /etc/nginx
+
+RUN ls /usr/share/nginx/html
+
 #VOLUME /etc/letsencryp
 RUN apt-get update && \
 	apt-get install certbot -y
@@ -11,8 +18,6 @@ RUN apt-get update && \
 #RUN	apt-get update && \
 #	apt-get install python-certbot-nginx -y
 
-COPY www /usr/share/nginx/html
-COPY config /etc/nginx
 
 #RUN certbot --authenticator webroot --installer nginx  \
 #	--agree-tos --email max.dstu@gmail.com --quiet \
