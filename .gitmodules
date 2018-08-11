@@ -1,0 +1,3 @@
+[submodule "www/webtree"]
+	path = www/webtree
+	url = git@github.com:Web-tree/landing.git
